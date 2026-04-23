@@ -1,7 +1,7 @@
 package com.advanced.client.mods.display;
 
 import com.advanced.client.mods.Mod;
-import net.minecraft.client.network.NetworkPlayerInfo;
+import net.minecraft.client.multiplayer.PlayerInfo;
 
 public class PingDisplayMod extends Mod {
 
@@ -11,9 +11,14 @@ public class PingDisplayMod extends Mod {
 
     @Override
     public void onRender() {
-        int ping = getPing();
-        String text = "Ping: " + ping + "ms";
-        drawText(text, (int) x, (int) y, color);
+        if (getMinecraft().player != null && getMinecraft().getConnection() != null) {
+            int ping = getPing();
+            String text = "Ping: " + ping + "ms";
+            getMinecraft().font.draw(
+                    com.mojang.blaze3d.vertex.PoseStack::new,
+                    net.minecraft.network.chat.Component.literal(text),
+                    x, y, color);
+        }
     }
 
     @Override
@@ -25,17 +30,13 @@ public class PingDisplayMod extends Mod {
     }
 
     private int getPing() {
-        if (getMinecraft().player != null) {
-            NetworkPlayerInfo playerInfo = getMinecraft().getConnection()
+        if (getMinecraft().player != null && getMinecraft().getConnection() != null) {
+            PlayerInfo playerInfo = getMinecraft().getConnection()
                     .getPlayerInfo(getMinecraft().player.getUUID());
             if (playerInfo != null) {
-                return playerInfo.getResponseTime();
+                return playerInfo.getLatency();
             }
         }
         return 0;
-    }
-
-    private void drawText(String text, int x, int y, int color) {
-        getMinecraft().fontRenderer.drawStringWithShadow(text, x, y, color);
     }
 }
