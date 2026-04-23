@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[14,)"
+license="MIT"
+
+[[dependencies.advancedclient]]
+    modId="forge"
+    mandatory=true
+    versionRange="[14.23.5.2860,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.advancedclient]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.12.2,1.13)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[mods]]
+modId="advancedclient"
+version="1.0.0"
+displayName="Advanced Minecraft Client"
+description='''
+A feature-rich Minecraft client mod for 1.12.2
+'''
