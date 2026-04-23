@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="Proprietary"
+issueTrackerURL="https://github.com/HasanatMomin/AdvancedMinecraftClient"
+
+[[mods]]
+modId="advancedclient"
+version="1.0.0"
+displayName="Advanced Minecraft Client"
+logoFile="assets/advancedclient/logo.png"
+credits="Advanced Client Team"
+authors="Advanced Team"
+description='''
+A professional Minecraft 1.20.1 client with 17+ customizable mods and maximum FPS optimization.
+'''
+
+[[dependencies.advancedclient]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47.2.0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.advancedclient]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"
