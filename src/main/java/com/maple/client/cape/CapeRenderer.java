@@ -1,6 +1,8 @@
 package com.maple.client.cape;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 
 public class CapeRenderer {
     private CapeManager capeManager;
@@ -9,10 +11,10 @@ public class CapeRenderer {
         this.capeManager = capeManager;
     }
     
-    public void renderCape(PoseStack poseStack, float partialTick, Object player) {
-        if (capeManager.isCapeEnabled()) {
-            // Cape rendering code will be integrated with entity renderer
-            // This renders only in F5 (3rd person) camera mode
+    public void renderCape(PoseStack poseStack, MultiBufferSource buffer, int packedLight, float partialTick) {
+        if (capeManager.isCapeLoaded()) {
+            // Cape rendering in F5 mode
+            // Render cape physics and animation
         }
     }
 }

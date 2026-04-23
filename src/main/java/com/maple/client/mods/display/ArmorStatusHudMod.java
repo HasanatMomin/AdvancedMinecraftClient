@@ -8,10 +8,9 @@ import net.minecraft.world.item.ItemStack;
 public class ArmorStatusHudMod extends Mod {
     
     public ArmorStatusHudMod() {
-        super("armorstatushud", "Armor Status", "🛡️", "Display");
-        this.x = 10;
-        this.y = 100;
-        this.color = 0xFFFFFF;
+        super("armorstatushud", "Armor Status", "🛡️");
+        this.x = 5;
+        this.y = 95;
     }
     
     @Override
@@ -24,22 +23,18 @@ public class ArmorStatusHudMod extends Mod {
                 getMinecraft().player.getItemBySlot(EquipmentSlot.FEET)
             };
             
-            String[] names = {"Head", "Chest", "Legs", "Feet"};
+            String[] names = {"H", "C", "L", "F"};
             int offsetY = 0;
-            
             for (int i = 0; i < armor.length; i++) {
                 if (!armor[i].isEmpty()) {
                     int durability = armor[i].getMaxDamage() - armor[i].getDamageValue();
                     int maxDurability = armor[i].getMaxDamage();
                     int percent = (durability * 100) / maxDurability;
-                    String text = names[i] + ": " + percent + "%";
-                    
-                    int displayColor = 0x00FF00;
-                    if (percent < 25) displayColor = 0xFF0000;
-                    else if (percent < 50) displayColor = 0xFFFF00;
-                    else if (percent < 75) displayColor = 0xFF8800;
-                    
-                    RenderUtils.drawText(getMinecraft(), text, (int) x, (int) (y + offsetY), displayColor);
+                    String text = names[i] + ":" + percent + "%";
+                    int drawX = (int) x;
+                    int drawY = (int) (y + offsetY);
+                    int color = percent > 75 ? 0xFF00FF00 : percent > 50 ? 0xFFFFFF00 : percent > 25 ? 0xFFFF8800 : 0xFFFF0000;
+                    RenderUtils.drawText(text, drawX, drawY, color);
                     offsetY += 12;
                 }
             }
@@ -47,10 +42,8 @@ public class ArmorStatusHudMod extends Mod {
     }
     
     @Override
-    public void onUpdate() {
-    }
+    public void onUpdate() {}
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
 }

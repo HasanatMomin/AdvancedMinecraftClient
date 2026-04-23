@@ -6,9 +6,10 @@ import org.lwjgl.input.Keyboard;
 public class ZoomMod extends Mod {
     private boolean isZoomed = false;
     private float zoomLevel = 3.0f;
+    private float originalFov = 70.0f;
     
     public ZoomMod() {
-        super("zoom", "Zoom", "🔍", "Gameplay");
+        super("zoom", "Zoom", "🔍");
     }
     
     @Override
@@ -21,8 +22,7 @@ public class ZoomMod extends Mod {
     }
     
     @Override
-    public void onUpdate() {
-    }
+    public void onUpdate() {}
     
     @Override
     public void onKeyPress(int keyCode) {

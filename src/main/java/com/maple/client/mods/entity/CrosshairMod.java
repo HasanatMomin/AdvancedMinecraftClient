@@ -6,19 +6,16 @@ public class CrosshairMod extends Mod {
     private String crosshairStyle = "cross";
     
     public CrosshairMod() {
-        super("crosshair", "Crosshair", "✕", "Entity");
+        super("crosshair", "Crosshair", "✕");
         setSetting("style", "cross");
     }
     
     @Override
-    public void onRender() {
-    }
+    public void onRender() {}
     
     @Override
-    public void onUpdate() {
-    }
+    public void onUpdate() {}
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
 }

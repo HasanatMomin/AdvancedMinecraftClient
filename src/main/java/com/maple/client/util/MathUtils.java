@@ -16,4 +16,8 @@ public class MathUtils {
         double dz = z2 - z1;
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
+    
+    public static float lerp(float a, float b, float t) {
+        return a + (b - a) * clamp(t, 0, 1);
+    }
 }

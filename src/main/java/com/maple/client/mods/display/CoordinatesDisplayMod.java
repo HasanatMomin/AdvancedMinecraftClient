@@ -6,10 +6,9 @@ import com.maple.client.util.RenderUtils;
 public class CoordinatesDisplayMod extends Mod {
     
     public CoordinatesDisplayMod() {
-        super("coordinatesdisplay", "Coordinates", "📍", "Display");
-        this.x = 10;
-        this.y = 70;
-        this.color = 0xFFFFFF;
+        super("coordinatesdisplay", "Coordinates", "📍");
+        this.x = 5;
+        this.y = 65;
     }
     
     @Override
@@ -20,24 +19,23 @@ public class CoordinatesDisplayMod extends Mod {
             double pz = getMinecraft().player.getZ();
             float yaw = getMinecraft().player.getYRot();
             String direction = getDirection(yaw);
-            
-            String text = String.format("X: %.1f Y: %.1f Z: %.1f [%s]", px, py, pz, direction);
-            RenderUtils.drawText(getMinecraft(), text, (int) x, (int) y, color);
+            String text = String.format("X:%.1f Y:%.1f Z:%.1f [%s]", px, py, pz, direction);
+            int drawX = (int) x;
+            int drawY = (int) y;
+            RenderUtils.drawText(text, drawX, drawY, 0xFFFFFFFF);
         }
     }
     
     @Override
-    public void onUpdate() {
-    }
+    public void onUpdate() {}
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
     
     private String getDirection(float yaw) {
-        if (yaw < 45 || yaw >= 315) return "+X";
-        if (yaw >= 45 && yaw < 135) return "+Z";
-        if (yaw >= 135 && yaw < 225) return "-X";
-        return "-Z";
+        if (yaw < 45 || yaw >= 315) return "E";
+        if (yaw >= 45 && yaw < 135) return "S";
+        if (yaw >= 135 && yaw < 225) return "W";
+        return "N";
     }
 }

@@ -15,14 +15,12 @@ public abstract class Mod {
     protected int color = 0xFFFFFF;
     protected int backgroundColor = 0x000000;
     protected float opacity = 1.0f;
-    protected String category = "Display";
     protected Map<String, Object> settings = new HashMap<>();
     
-    public Mod(String id, String name, String icon, String category) {
+    public Mod(String id, String name, String icon) {
         this.id = id;
         this.name = name;
         this.icon = icon;
-        this.category = category;
     }
     
     public abstract void onRender();
@@ -53,7 +51,6 @@ public abstract class Mod {
     public String getId() { return id; }
     public String getName() { return name; }
     public String getIcon() { return icon; }
-    public String getCategory() { return category; }
     public boolean isEnabled() { return enabled; }
     public double getX() { return x; }
     public double getY() { return y; }

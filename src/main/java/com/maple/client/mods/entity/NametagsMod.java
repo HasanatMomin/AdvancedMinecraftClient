@@ -5,18 +5,15 @@ import com.maple.client.mods.Mod;
 public class NametagsMod extends Mod {
     
     public NametagsMod() {
-        super("nametags", "Nametags", "📛", "Entity");
+        super("nametags", "Nametags", "📛");
     }
     
     @Override
-    public void onRender() {
-    }
+    public void onRender() {}
     
     @Override
-    public void onUpdate() {
-    }
+    public void onUpdate() {}
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
 }

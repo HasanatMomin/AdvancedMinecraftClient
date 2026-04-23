@@ -7,25 +7,24 @@ public class ReachDisplayMod extends Mod {
     private double lastReach = 0;
     
     public ReachDisplayMod() {
-        super("reachdisplay", "Reach Display", "🎯", "Display");
-        this.x = 10;
-        this.y = 115;
-        this.color = 0xFFFFFF;
+        super("reachdisplay", "Reach Display", "🎯");
+        this.x = 5;
+        this.y = 110;
     }
     
     @Override
     public void onRender() {
         String text = "Reach: " + String.format("%.2f", lastReach);
-        RenderUtils.drawText(getMinecraft(), text, (int) x, (int) y, color);
+        int drawX = (int) x;
+        int drawY = (int) y;
+        RenderUtils.drawText(text, drawX, drawY, 0xFFFFFFFF);
     }
     
     @Override
-    public void onUpdate() {
-    }
+    public void onUpdate() {}
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
     
     public void setReach(double reach) {
         this.lastReach = reach;

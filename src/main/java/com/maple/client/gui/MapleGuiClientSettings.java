@@ -2,66 +2,94 @@ package com.maple.client.gui;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 import org.lwjgl.input.Keyboard;
 import com.maple.client.mods.ModManager;
-import com.maple.client.mods.Mod;
-import java.util.List;
 
 public class MapleGuiClientSettings extends Screen {
     private int selectedTab = 0; // 0 = Mods, 1 = Settings
-    private int scrollOffset = 0;
+    private int modStartIndex = 0;
+    private static final int MODS_PER_PAGE = 6;
     
     public MapleGuiClientSettings() {
-        super(Component.literal("🍁 Maple Client Settings"));
+        super(Component.literal("Maple Client Settings"));
+    }
+    
+    @Override
+    protected void init() {
+        super.init();
+        
+        // Tab buttons
+        this.addRenderableWidget(Button.builder(Component.literal("Mods"), (button) -> {
+            selectedTab = 0;
+        }).bounds(this.width / 4 - 50, this.height / 4 + 10, 100, 20).build());
+        
+        this.addRenderableWidget(Button.builder(Component.literal("Settings"), (button) -> {
+            selectedTab = 1;
+        }).bounds(this.width / 4 + 60, this.height / 4 + 10, 100, 20).build());
+        
+        // Close button
+        this.addRenderableWidget(Button.builder(Component.literal("Close"), (button) -> {
+            this.minecraft.setScreen(null);
+        }).bounds(this.width - 110, this.height - 30, 100, 20).build());
     }
     
     @Override
     public void render(GuiGraphics guiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
         this.renderBg(guiGraphics);
+        
+        // Draw blur background
         guiGraphics.fill(0, 0, this.width, this.height, 0x80000000);
         
+        // Draw main panel
         int panelX = this.width / 4;
         int panelY = this.height / 4;
         int panelWidth = this.width / 2;
-        int panelHeight = this.height / 2;
-        
+        int panelHeight = 3 * this.height / 4;
         guiGraphics.fill(panelX, panelY, panelX + panelWidth, panelY + panelHeight, 0xFF1F1F1F);
-        guiGraphics.drawCenteredString(this.font, "🍁 Maple Client Settings", this.width / 2, panelY + 10, 0xFFFFFF);
         
-        // Tab buttons
-        guiGraphics.fill(panelX + 20, panelY + 35, panelX + 80, panelY + 50, selectedTab == 0 ? 0xFF00AA00 : 0xFF666666);
-        guiGraphics.drawCenteredString(this.font, "Mods", panelX + 50, panelY + 38, 0xFFFFFF);
-        
-        guiGraphics.fill(panelX + 90, panelY + 35, panelX + 150, panelY + 50, selectedTab == 1 ? 0xFF00AA00 : 0xFF666666);
-        guiGraphics.drawCenteredString(this.font, "Settings", panelX + 120, panelY + 38, 0xFFFFFF);
+        // Draw title
+        guiGraphics.drawCenteredString(this.font, "🍁 Maple Client Settings", this.width / 2, panelY + 10, 0xFF00AA00);
         
         if (selectedTab == 0) {
-            renderModsList(guiGraphics, panelX, panelY, panelWidth, panelHeight);
+            renderModsTab(guiGraphics, panelX, panelY, panelWidth, panelHeight);
         } else {
-            renderSettingsList(guiGraphics, panelX, panelY, panelWidth, panelHeight);
+            renderSettingsTab(guiGraphics, panelX, panelY, panelWidth, panelHeight);
         }
-    }
-    
-    private void renderModsList(GuiGraphics guiGraphics, int x, int y, int width, int height) {
-        List<Mod> mods = ModManager.getInstance().getAllMods();
-        int offsetY = 65;
         
-        for (Mod mod : mods) {
+        super.render(guiGraphics, pMouseX, pMouseY, pPartialTick);
+    }
+    
+    private void renderModsTab(GuiGraphics guiGraphics, int panelX, int panelY, int panelWidth, int panelHeight) {
+        guiGraphics.drawString(this.font, "Available Mods (" + ModManager.getInstance().getAllMods().size() + ")", panelX + 10, panelY + 40, 0xFFFFFF);
+        
+        int offsetY = 60;
+        var mods = ModManager.getInstance().getAllMods();
+        for (int i = modStartIndex; i < Math.min(modStartIndex + MODS_PER_PAGE, mods.size()); i++) {
+            var mod = mods.get(i);
             String status = mod.isEnabled() ? "✓" : "✗";
-            String text = mod.getIcon() + " " + mod.getName() + " [" + status + "]";
-            guiGraphics.drawString(this.font, text, x + 20, y + offsetY, 0xFFFFFF);
-            offsetY += 15;
-            
-            if (offsetY > y + height - 30) break;
+            String text = mod.getIcon() + " " + mod.getName() + " " + status;
+            guiGraphics.drawString(this.font, text, panelX + 20, panelY + offsetY, mod.isEnabled() ? 0xFF00FF00 : 0xFFFF0000);
+            offsetY += 20;
         }
     }
     
-    private void renderSettingsList(GuiGraphics guiGraphics, int x, int y, int width, int height) {
-        guiGraphics.drawString(this.font, "Performance Level: 5/10", x + 20, y + 65, 0xFFFFFF);
-        guiGraphics.drawString(this.font, "Raw Mouse Input: ON", x + 20, y + 80, 0xFFFFFF);
-        guiGraphics.drawString(this.font, "Cape Enabled: ON", x + 20, y + 95, 0xFFFFFF);
-        guiGraphics.drawString(this.font, "Borderless Fullscreen: OFF", x + 20, y + 110, 0xFFFFFF);
+    private void renderSettingsTab(GuiGraphics guiGraphics, int panelX, int panelY, int panelWidth, int panelHeight) {
+        guiGraphics.drawString(this.font, "Global Settings", panelX + 10, panelY + 40, 0xFFFFFF);
+        
+        int offsetY = 60;
+        String[] settings = {
+            "✓ Raw Mouse Input",
+            "✗ Borderless Fullscreen",
+            "✓ Cape Display",
+            "Performance Level: 5/10"
+        };
+        
+        for (String setting : settings) {
+            guiGraphics.drawString(this.font, setting, panelX + 20, panelY + offsetY, 0xFFFFFF);
+            offsetY += 20;
+        }
     }
     
     @Override
@@ -70,19 +98,7 @@ public class MapleGuiClientSettings extends Screen {
             this.minecraft.setScreen(null);
             return true;
         }
-        
-        if (pKeyCode == Keyboard.KEY_TAB) {
-            selectedTab = (selectedTab + 1) % 2;
-            return true;
-        }
-        
         return super.keyPressed(pKeyCode, pScanCode, pModifiers);
-    }
-    
-    @Override
-    public boolean mouseScrolled(double pMouseX, double pMouseY, double pScrollX, double pScrollY) {
-        scrollOffset -= (int) pScrollY * 5;
-        return true;
     }
     
     @Override

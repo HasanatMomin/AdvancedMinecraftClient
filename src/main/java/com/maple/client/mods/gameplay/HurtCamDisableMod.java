@@ -5,12 +5,11 @@ import com.maple.client.mods.Mod;
 public class HurtCamDisableMod extends Mod {
     
     public HurtCamDisableMod() {
-        super("hurtcamdisable", "Hurt Cam Disable", "🛡️", "Gameplay");
+        super("hurtcamdisable", "Hurt Cam Disable", "🛡️");
     }
     
     @Override
-    public void onRender() {
-    }
+    public void onRender() {}
     
     @Override
     public void onUpdate() {
@@ -20,6 +19,5 @@ public class HurtCamDisableMod extends Mod {
     }
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
 }

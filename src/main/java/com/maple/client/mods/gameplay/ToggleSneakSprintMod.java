@@ -10,12 +10,11 @@ public class ToggleSneakSprintMod extends Mod {
     private long lastSneakToggle = 0;
     
     public ToggleSneakSprintMod() {
-        super("togglesneaksprint", "Toggle Sneak/Sprint", "🏃", "Gameplay");
+        super("togglesneaksprint", "Toggle Sneak/Sprint", "🏃");
     }
     
     @Override
-    public void onRender() {
-    }
+    public void onRender() {}
     
     @Override
     public void onUpdate() {

@@ -1,9 +1,9 @@
 package com.maple.client.mods;
 
-import java.util.*;
 import com.maple.client.mods.display.*;
 import com.maple.client.mods.gameplay.*;
 import com.maple.client.mods.entity.*;
+import java.util.*;
 
 public class ModManager {
     private static final ModManager INSTANCE = new ModManager();
@@ -75,25 +75,7 @@ public class ModManager {
         }
     }
     
-    public void keyPressAllMods(int keyCode) {
-        for (Mod mod : modList) {
-            if (mod.isEnabled()) {
-                mod.onKeyPress(keyCode);
-            }
-        }
-    }
-    
     public int getEnabledModCount() {
         return (int) modList.stream().filter(Mod::isEnabled).count();
-    }
-    
-    public List<Mod> getModsByCategory(String category) {
-        List<Mod> result = new ArrayList<>();
-        for (Mod mod : modList) {
-            if (mod.getCategory().equals(category)) {
-                result.add(mod);
-            }
-        }
-        return result;
     }
 }

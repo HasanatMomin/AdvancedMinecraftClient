@@ -8,16 +8,17 @@ public class ComboCounterMod extends Mod {
     private long lastHitTime = 0;
     
     public ComboCounterMod() {
-        super("combocounter", "Combo Counter", "💥", "Display");
-        this.x = 10;
-        this.y = 130;
-        this.color = 0xFF0000;
+        super("combocounter", "Combo Counter", "💥");
+        this.x = 5;
+        this.y = 125;
     }
     
     @Override
     public void onRender() {
         String text = "Combo: " + comboCount;
-        RenderUtils.drawText(getMinecraft(), text, (int) x, (int) y, color);
+        int drawX = (int) x;
+        int drawY = (int) y;
+        RenderUtils.drawText(text, drawX, drawY, 0xFFFF0000);
     }
     
     @Override
@@ -29,8 +30,7 @@ public class ComboCounterMod extends Mod {
     }
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
     
     public void incrementCombo() {
         comboCount++;

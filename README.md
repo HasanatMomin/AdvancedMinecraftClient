@@ -1,105 +1,88 @@
-# 🍁 Maple Client - Advanced Minecraft 26.1.2 Forge Client
+# 🍁 Maple Client - Minecraft 26.1.2 Forge Mod
 
 ## Overview
-A professional, production-ready Minecraft 26.1.2 Forge client mod with 17+ customizable visual mods, professional GUI, and maximum FPS optimization.
+Maple Client is a professional, legitimate Minecraft 26.1.2 client mod featuring 17+ customizable visual mods, optimized performance, and a beautiful user interface.
+
+## Features
+
+### ✅ 17+ Custom Mods
+**Display Mods (9)**:
+- FPS Display - Real-time FPS counter with color coding
+- Ping Display - Server latency indicator
+- CPS Display - Left/Right clicks per second
+- Keystrokes - WASD keyboard visualization
+- Coordinates - XYZ position + direction
+- Potion Effects - Active status effects with timers
+- Armor Status - Durability tracking for all armor
+- Reach Display - Hit distance indicator
+- Combo Counter - Hit combo tracking
+
+**Gameplay Mods (4)**:
+- Toggle Sneak/Sprint - R key sprint, CTRL sneak
+- Zoom - Z key zoom (2x-5x adjustable)
+- Full Bright - Brightness/gamma adjustment
+- Hurt Cam Disable - Disable camera shake
+
+**Entity Mods (4)**:
+- Nametags - Player name display
+- Crosshair - Customizable crosshairs
+- Block Outline - Block highlighting
+- Hitbox Display - Player hitbox visualization
+
+### ✅ Professional GUI
+- Custom Maple Client title screen
+- Right Shift overlay for settings
+- Tab-based interface (Mods + Settings)
+- Background blur effect
+- Smooth animations
+
+### ✅ Performance Optimization
+- 10-level performance slider (1-10)
+- JVM tuning with G1GC
+- OpenGL optimization
+- Render distance optimization
+- Particle density control
+
+### ✅ Custom Cape
+- Loads PNG from: `C:\Users\lavas\Downloads\cape_texture.png`
+- F5 (3rd person) rendering only
+- Enabled by default
 
 ## Requirements
-- **Java**: JDK 25 (C:\Program Files\Bellsoft)
-- **Minecraft**: 26.1.2
-- **Forge**: Latest for 26.1.2
+- Java 25 (JDK 25)
+- Minecraft 26.1.2
+- Forge 26.1.2
 
 ## Building
+
 ```bash
 ./gradlew build
 ```
 
 **Output**: `build/libs/MapleClient-1.0.jar`
 
-## Features
+## Installation
 
-### ✅ All 17+ Mods Implemented
-
-**Display Mods (9)**:
-- ⚡ FPS Display - Real-time FPS counter
-- 📡 Ping Display - Server latency indicator
-- 🖱️ CPS Display - Separate Left/Right CPS tracking
-- ⌨️ Keystrokes - WASD keyboard visualization
-- 📍 Coordinates - XYZ position + direction
-- 🧪 Potion Effects - Active potions with timers
-- 🛡️ Armor Status - Durability with color coding
-- 🎯 Reach Display - Last hit distance
-- 💥 Combo Counter - Hit counter (resets on damage)
-
-**Gameplay Mods (4)**:
-- 🏃 Toggle Sneak/Sprint - R key sprint, CTRL sneak
-- 🔍 Zoom - Z key zoom (2x-5x adjustable)
-- ☀️ Full Bright - Brightness adjustment (0-100%)
-- 🛡️ Hurt Cam Disable - No camera shake on damage
-
-**Entity Mods (4)**:
-- 📛 Nametags - Player nametag display
-- ✕ Crosshair - Customizable crosshair
-- □ Block Outline - Block highlighting
-- ⬛ Hitbox Display - Player hitbox visualization
-
-### ✅ Custom GUI System
-- 🍁 Maple Client Title Screen
-- Right Shift Client Settings overlay
-- Tab interface (Mods + Settings)
-- Background blur effect
-- Professional animations
-
-### ✅ Performance Optimization
-- 10-level performance slider (6 to 360+ FPS)
-- JVM G1GC tuning (Java 25)
-- Render distance optimization
-- Particle density control
-- Cloud/weather toggle
-
-### ✅ Custom Cape System
-- PNG loader from: `C:\Users\lavas\Downloads\cape_texture.png`
-- F5 (3rd person) camera rendering only
-- Enabled by default
-- Physics animations
-
-### ✅ Persistent Configuration
-- JSON-based settings
-- Auto-save on changes
-- Per-mod customization
-- Location: `./config/mapleclient/settings.json`
+1. Place `MapleClient-1.0.jar` in your Minecraft mods folder
+2. Launch Minecraft with Forge
+3. Enjoy!
 
 ## Keybinds
 
-| Key | Action |
-|-----|--------|
-| **Right Shift** | Open Client Settings |
-| **Z** | Toggle Zoom |
-| **R** | Toggle Sprint |
-| **CTRL** | Toggle Sneak |
+- **Right Shift** - Open Client Settings
+- **Z** - Toggle Zoom
+- **R** - Toggle Sprint
+- **CTRL** - Toggle Sneak
 
-## Installation
+## Configuration
 
-1. Build the mod: `./gradlew build`
-2. Copy `build/libs/MapleClient-1.0.jar` to your mods folder
-3. Launch Minecraft with Forge
-4. Press **Right Shift** in-game to open Maple Client Settings
-
-## Features Status
-
-| Feature | Status |
-|---------|--------|
-| 17+ Mods | ✅ Complete |
-| GUI System | ✅ Complete |
-| Cape System | ✅ Complete |
-| Event Integration | ✅ Complete |
-| Performance Slider | ✅ Complete |
-| JVM Tuning | ✅ Complete |
-| Configuration | ✅ Complete |
-| Build System | ✅ Ready |
+Settings stored in: `./config/mapleclient/settings.json`
 
 ## License
 Proprietary - Maple Client
 
 ---
 
-**🍁 Maple Client - Professional Minecraft Customization 🍁**
+**Version**: 1.0.0  
+**Minecraft**: 26.1.2  
+**Forge**: 47.2.0+

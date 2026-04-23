@@ -7,10 +7,9 @@ import net.minecraft.world.effect.MobEffectInstance;
 public class PotionEffectsHudMod extends Mod {
     
     public PotionEffectsHudMod() {
-        super("potioneffectshud", "Potion Effects", "🧪", "Display");
-        this.x = 10;
-        this.y = 85;
-        this.color = 0x00FF00;
+        super("potioneffectshud", "Potion Effects", "🧪");
+        this.x = 5;
+        this.y = 80;
     }
     
     @Override
@@ -21,18 +20,17 @@ public class PotionEffectsHudMod extends Mod {
                 String effectName = effect.getEffect().getDisplayName().getString();
                 int duration = effect.getDuration() / 20;
                 String text = effectName + " " + duration + "s";
-                
-                RenderUtils.drawText(getMinecraft(), text, (int) x, (int) (y + offsetY), 0x00FF00);
+                int drawX = (int) x;
+                int drawY = (int) (y + offsetY);
+                RenderUtils.drawText(text, drawX, drawY, 0xFF00FF00);
                 offsetY += 12;
             }
         }
     }
     
     @Override
-    public void onUpdate() {
-    }
+    public void onUpdate() {}
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
 }

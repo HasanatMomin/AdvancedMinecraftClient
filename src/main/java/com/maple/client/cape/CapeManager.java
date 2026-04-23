@@ -1,5 +1,6 @@
 package com.maple.client.cape;
 
+import net.minecraft.util.ResourceLocation;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -7,6 +8,7 @@ import java.io.IOException;
 
 public class CapeManager {
     private static final String CAPE_PATH = "C:\\Users\\lavas\\Downloads\\cape_texture.png";
+    private static final ResourceLocation CAPE_TEXTURE = new ResourceLocation("mapleclient", "textures/cape.png");
     
     private BufferedImage capeImage;
     private boolean capeLoaded = false;
@@ -24,6 +26,7 @@ public class CapeManager {
                 capeLoaded = true;
             }
         } catch (IOException e) {
+            e.printStackTrace();
             capeLoaded = false;
         }
     }
@@ -33,14 +36,18 @@ public class CapeManager {
     }
     
     public boolean isCapeLoaded() {
-        return capeLoaded;
+        return capeLoaded && capeEnabled;
     }
     
-    public boolean isCapeEnabled() {
-        return capeEnabled && capeLoaded;
+    public ResourceLocation getCapeResourceLocation() {
+        return CAPE_TEXTURE;
     }
     
     public void toggleCape() {
         capeEnabled = !capeEnabled;
+    }
+    
+    public boolean isCapeEnabled() {
+        return capeEnabled;
     }
 }

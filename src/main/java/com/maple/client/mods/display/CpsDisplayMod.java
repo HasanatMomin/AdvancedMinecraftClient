@@ -10,16 +10,17 @@ public class CpsDisplayMod extends Mod {
     private long lastRightClick = 0;
     
     public CpsDisplayMod() {
-        super("cpsdisplay", "CPS Display", "🖱️", "Display");
-        this.x = 10;
-        this.y = 40;
-        this.color = 0xFFFFFF;
+        super("cpsdisplay", "CPS Display", "🖱️");
+        this.x = 5;
+        this.y = 35;
     }
     
     @Override
     public void onRender() {
-        String text = "L: " + leftCps + " R: " + rightCps;
-        RenderUtils.drawText(getMinecraft(), text, (int) x, (int) y, color);
+        String text = "CPS: L" + leftCps + " R" + rightCps;
+        int drawX = (int) x;
+        int drawY = (int) y;
+        RenderUtils.drawText(text, drawX, drawY, 0xFFFFFFFF);
     }
     
     @Override
@@ -30,8 +31,7 @@ public class CpsDisplayMod extends Mod {
     }
     
     @Override
-    public void onKeyPress(int keyCode) {
-    }
+    public void onKeyPress(int keyCode) {}
     
     public void recordLeftClick() {
         lastLeftClick = System.currentTimeMillis();

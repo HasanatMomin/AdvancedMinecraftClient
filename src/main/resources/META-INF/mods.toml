@@ -1,7 +1,6 @@
 modLoader="javafxmod"
 loaderVersion="[47,)"
 license="Proprietary"
-issueTrackerURL="https://github.com/HasanatMomin/AdvancedMinecraftClient"
 
 [[mods]]
 modId="mapleclient"
