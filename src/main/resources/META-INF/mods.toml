@@ -1,0 +1,20 @@
+modLoader="javafxmod"
+loaderVersion="[47,)"
+license="Proprietary"
+issueTrackerURL="https://github.com/HasanatMomin/AdvancedMinecraftClient"
+
+[[mods]]
+modId="mapleclient"
+version="1.0.0"
+displayName="Maple Client"
+logoFile="assets/mapleclient/logo.png"
+credits="Maple Client Development Team"
+authors="Maple Team"
+description="Professional Minecraft 26.1.2 client with 17+ customizable mods and maximum FPS optimization."
+
+[[dependencies.mapleclient]]
+modId="minecraft"
+mandatory=true
+versionRange="[26.1.2,)"
+ordering="NONE"
+side="CLIENT"

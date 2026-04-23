@@ -1,0 +1,52 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'eclipse'
+    id 'maven-publish'
+}
+
+group = 'com.maple'
+version = '1.0.0'
+archivesBaseName = 'MapleClient'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+minecraft {
+    mappings channel: 'official', version: '26.1.2'
+    
+    runs {
+        client {
+            workingDirectory project.file('run')
+            ideaModule "${project.name}.main"
+            args '--username=Player', '--version=26.1.2'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:26.1.2-47.2.0'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.minecraftforge.net' }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+    manifest {
+        attributes 'Specification-Title': 'Maple Client'
+        attributes 'Specification-Version': '1'
+        attributes 'Implementation-Title': project.name
+        attributes 'Implementation-Version': project.version
+    }
+}
